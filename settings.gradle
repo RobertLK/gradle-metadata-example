@@ -1,0 +1,3 @@
+include ':mpp'
+
+enableFeaturePreview('GRADLE_METADATA')
