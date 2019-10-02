@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion.toInteger()
+
+    defaultConfig {
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+
+        versionCode project.ext.currentVersion.toInteger()
+        versionName project.ext.currentVersion
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            matchingFallbacks = ['release']
+        }
+        release {
+            minifyEnabled false
+        }
+        sample {
+            debuggable true
+            matchingFallbacks = ['debug', 'release']
+        }
+    }
+}
+
+dependencies {
+    implementation "com.example.metadata_sample:mpp-android:1"
+}

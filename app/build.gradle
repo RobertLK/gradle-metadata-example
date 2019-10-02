@@ -1,0 +1,33 @@
+apply plugin: 'com.android.application'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion project.ext.compileSdkVersion.toInteger()
+
+    defaultConfig {
+        minSdkVersion project.ext.minSdkVersion
+        targetSdkVersion project.ext.targetSdkVersion
+
+        versionCode project.ext.currentVersion.toInteger()
+        versionName project.ext.currentVersion
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            //Needed here to use library
+            //matchingFallbacks = ['release']
+        }
+        release {
+            minifyEnabled false
+        }
+        sample {
+            //Needed here to use library
+            //matchingFallbacks = ['debug', 'release']
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: ':lib')
+}
